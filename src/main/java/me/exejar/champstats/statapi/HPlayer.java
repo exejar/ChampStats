@@ -1,5 +1,6 @@
 package me.exejar.champstats.statapi;
 
+import me.exejar.champstats.statapi.stats.Stat;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.HashMap;
@@ -7,7 +8,7 @@ import java.util.List;
 
 public class HPlayer {
 
-    private HashMap<HGameBase, List<String>> gameStatMap;
+    private HashMap<HGameBase, List<Stat>> gameStatMap;
     private String playerUUID, playerName;
 
     /**
