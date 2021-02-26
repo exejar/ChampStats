@@ -2,20 +2,36 @@ package me.exejar.champstats.statapi;
 
 import net.minecraft.entity.player.EntityPlayer;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class HPlayer {
 
-    private HGameBase gameBase;
+    private HashMap<HGameBase, List<String>> gameStatMap;
+    private String playerUUID, playerName;
 
-    public HPlayer(HGameBase gameBase) { this.gameBase = gameBase; }
+    /**
+     * @param playerUUID Player's UUID
+     * @param playerName Player's Name
+     * @param gameBase All HGameBase's you would like the HPlayer to contain
+     * (Generally you would like all HGameBases which are complete to be added)
+     */
+    public HPlayer(String playerUUID, String playerName, HGameBase... gameBase) {
+        this.playerUUID = playerUUID;
+        this.playerName = playerName;
 
-    public String getPlayerUUID() { return gameBase.getPlayerUUID(); }
+        gameStatMap = new HashMap<>();
+        for (HGameBase game : gameBase) {
+            this.gameStatMap.put(game, game.getStatList());
+        }
+    }
 
-    public String getPlayerName() { return gameBase.getPlayerName(); }
+    public String getPlayerUUID() {
+        return playerUUID;
+    }
 
-    public String getFormattedStats() { return gameBase.getFormattedStats(); }
-
-    public EntityPlayer getPlayerEntity() { return gameBase.getPlayerEntity(); }
-
-    public HypixelGames getGame() { return gameBase.getGame(); }
+    public String getPlayerName() {
+        return playerName;
+    }
 
 }
