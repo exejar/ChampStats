@@ -9,13 +9,23 @@ import java.util.List;
 public class Bedwars extends BedwarsUtils {
 
     private JsonObject bedwarsJson;
-    private int gamesPlayed, finalKills, finalDeaths, wins, losses, kills, deaths, bedsBroken, bedsLost;
+    private Stat gamesPlayed, finalKills, finalDeaths, wins, losses, kills, deaths, bedsBroken, bedsLost;
 
     public Bedwars(String playerName, String playerUUID) {
         super(playerName, playerUUID);
     }
 
+    @Override
+    public void setData() {
+        this.isNicked = false;
+        this.hasPlayed = false;
+        JsonObject obj = null;
+        boolean isFunctional = false;
+        try {
+            obj = setGameData(getPlayerUUID(), "Bedwars");
+        }
 
+    }
 
     @Override
     public String getFormattedStats() {

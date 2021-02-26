@@ -45,6 +45,11 @@ public abstract class HGameBase extends HypixelAPI {
      */
     public abstract List<Stat> getStatList();
 
+    /**
+     * Method to set the Game Data
+     */
+    public abstract void setData();
+
     public String getPlayerName() {
         return this.playerName;
     }

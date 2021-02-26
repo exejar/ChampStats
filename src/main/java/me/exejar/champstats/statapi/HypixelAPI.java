@@ -27,7 +27,7 @@ public class HypixelAPI {
      * @throws PlayerNullException If Target Player UUID is returned Null from the Hypixel API
      * @throws ApiRequestException If any other exception is thrown during the request
      */
-    public JsonObject setGameData(String uuid, String gameType) throws InvalidKeyException, PlayerNullException, ApiRequestException {
+    public JsonObject setGameData(String uuid, HypixelGames game) throws InvalidKeyException, PlayerNullException, ApiRequestException {
         JsonObject obj = new JsonObject();
         if (key == null) {
             throw new InvalidKeyException();
@@ -56,7 +56,7 @@ public class HypixelAPI {
         JsonObject player = obj.get("player").getAsJsonObject();
 
         JsonObject stats = player.get("stats").getAsJsonObject();
-        obj = stats.get(gameType).getAsJsonObject();
+        obj = stats.get(game.getApiName()).getAsJsonObject();
 
         return obj;
     }
