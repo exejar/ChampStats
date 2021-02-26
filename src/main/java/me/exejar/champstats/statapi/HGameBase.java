@@ -2,6 +2,10 @@ package me.exejar.champstats.statapi;
 
 import com.google.gson.JsonObject;
 import me.exejar.champstats.statapi.stats.Stat;
+import me.exejar.champstats.statapi.stats.StatDouble;
+import me.exejar.champstats.statapi.stats.StatInt;
+import me.exejar.champstats.statapi.stats.StatString;
+import me.exejar.champstats.utils.Handler;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.HashMap;
@@ -65,10 +69,17 @@ public abstract class HGameBase extends HypixelAPI {
         LinkedList<Stat> statList = new LinkedList<>();
 
         for (Stat stat : stats) {
+            stat.setStat();
             statList.add(stat);
         }
 
         return statList;
+    }
+
+    protected void setStatsAsync(JsonObject gameObject, Stat... stats) {
+        for (Stat stat : stats) {
+            Handler.asExecutor(stat::setStat);
+        }
     }
 
 }

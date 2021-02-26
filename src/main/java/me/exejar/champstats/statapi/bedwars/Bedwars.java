@@ -2,6 +2,9 @@ package me.exejar.champstats.statapi.bedwars;
 
 import com.google.gson.JsonObject;
 import me.exejar.champstats.statapi.HypixelGames;
+import me.exejar.champstats.statapi.stats.Stat;
+
+import java.util.List;
 
 public class Bedwars extends BedwarsUtils {
 
@@ -21,6 +24,11 @@ public class Bedwars extends BedwarsUtils {
 
     @Override
     public HypixelGames getGame() {
+        return null;
+    }
+
+    @Override
+    public List<Stat> getStatList() {
         return null;
     }
 }
