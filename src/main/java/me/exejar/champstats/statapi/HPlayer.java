@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HPlayer {
 
-    private HashMap<HGameBase, List<Stat>> gameStatMap;
+    private HashMap<String, List<Stat>> gameStatMap;
     private String playerUUID, playerName;
 
     /**
@@ -23,7 +23,7 @@ public class HPlayer {
 
         gameStatMap = new HashMap<>();
         for (HGameBase game : gameBase) {
-            this.gameStatMap.put(game, game.getStatList());
+            this.gameStatMap.put(game.getGame().getGameName(), game.getStatList());
         }
     }
 
@@ -33,6 +33,10 @@ public class HPlayer {
 
     public String getPlayerName() {
         return playerName;
+    }
+
+    public List<Stat> getGameStats(String gameName) {
+        return gameStatMap.get(gameName);
     }
 
 }
