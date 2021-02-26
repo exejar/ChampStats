@@ -1,6 +1,7 @@
 package me.exejar.champstats.statapi;
 
 import com.google.gson.JsonObject;
+import me.exejar.champstats.statapi.stats.Stat;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.HashMap;
@@ -38,7 +39,7 @@ public abstract class HGameBase extends HypixelAPI {
     /**
      * @return List of Every Formatted Stat from respective Game
      */
-    public abstract List<String> getStatList();
+    public abstract List<Stat> getStatList();
 
     public String getPlayerName() {
         return this.playerName;
@@ -60,11 +61,11 @@ public abstract class HGameBase extends HypixelAPI {
         return this.hasPlayed;
     }
 
-    protected HashMap<String, String> setStats(JsonObject gameObject, String... stats) {
-        LinkedList<String> statList = new LinkedList<>();
+    protected List<Stat> setStats(JsonObject gameObject, Stat... stats) {
+        LinkedList<Stat> statList = new LinkedList<>();
 
-        for (String stat : stats) {
-            statList.add
+        for (Stat stat : stats) {
+            statList.add(stat);
         }
 
         return statList;
