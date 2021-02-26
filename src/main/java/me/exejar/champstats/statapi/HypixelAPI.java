@@ -21,7 +21,7 @@ public class HypixelAPI {
 
     /**
      * @param uuid Target Player's UUID
-     * @param gameType Game Stats to retrieve
+     * @param game Game Stats to retrieve
      * @return JsonObject of the specified gameType's Stats
      * @throws InvalidKeyException If Hypixel API Key is Invalid
      * @throws PlayerNullException If Target Player UUID is returned Null from the Hypixel API
