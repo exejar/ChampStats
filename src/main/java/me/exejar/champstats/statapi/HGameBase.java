@@ -48,7 +48,7 @@ public abstract class HGameBase extends HypixelAPI {
     /**
      * Method to set the Game Data
      */
-    public abstract void setData();
+    public abstract boolean setData(HypixelGames game);
 
     public String getPlayerName() {
         return this.playerName;
@@ -81,9 +81,12 @@ public abstract class HGameBase extends HypixelAPI {
         return statList;
     }
 
-    protected void setStatsAsync(JsonObject gameObject, Stat... stats) {
+    protected void setStatsAsync(List<Stat> statList, Stat... stats) {
         for (Stat stat : stats) {
-            Handler.asExecutor(stat::setStat);
+            Handler.asExecutor(()-> {
+                stat.setStat();
+                statList.add(stat);
+            });
         }
     }
 
